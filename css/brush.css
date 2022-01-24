@@ -1,0 +1,9 @@
+.controls_range {
+  display: flex;
+  flex-direction: column;
+}
+
+#brush-initial {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
