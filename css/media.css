@@ -1,0 +1,47 @@
+@media screen and (min-width: 761px) and (max-width: 1000px) {
+  .canvas {
+    width: 500px;
+    height: 700px;
+  }
+  .controls_colors .controls_color {
+    width: 40px;
+    height: 40px;
+    margin: 0px 7px;
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 750px) {
+  .canvas {
+    width: 350px;
+    height: 550px;
+  }
+  .controls_colors .controls_color {
+    width: 30px;
+    height: 30px;
+    margin: 0px 5px;
+  }
+}
+
+@media screen and (min-width: 301px) and (max-width: 500px) {
+  .canvas {
+    width: 300px;
+    height: 500px;
+  }
+  .controls_colors .controls_color {
+    width: 30px;
+    height: 30px;
+    margin: 0px 2px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .canvas {
+    width: 250px;
+    height: 400px;
+  }
+  .controls_colors .controls_color {
+    width: 25px;
+    height: 25px;
+    margin: 0px 2px;
+  }
+}
