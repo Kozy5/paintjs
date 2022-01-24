@@ -48,17 +48,19 @@ function handleMouseMove(event) {
   }
 }
 
-function onTouchStart(event) {
-  const x = event.offsetX;
-  const y = event.offsetY;
+//핸드폰
+
+function onTouchStart(ev) {
+  const x = ev._x;
+  const y = ev._y;
   ctx.beginPath();
   ctx.moveTo(x, y);
   painting = true;
 }
 
 function onTouchMove(event) {
-  const x = event.offsetX;
-  const y = event.offsetY;
+  const x = ev._x;
+  const y = ev._y;
   if (painting) {
     ctx.lineTo(x, y);
     ctx.stroke();
@@ -68,6 +70,23 @@ function onTouchEnd() {
   if (painting) {
     onTouchMove();
     painting = false;
+  }
+}
+
+function ev_canvas(ev) {
+  if (ev.targetTouches[0] || ev.targetTouches[0].pageX == 0) {
+    let left = 0;
+    var top = 0;
+    var elem = document.querySelector("#jsCanvas");
+
+    while (elem) {
+      left = left + parseInt(elem.offsetLeft);
+      top = top + parseInt(elem.offsetTop);
+      elem = elem.offsetParent;
+    }
+
+    ev._x = ev.targetTouches[0].pageX - left;
+    ev._y = ev.targetTouches[0].pageY - top;
   }
 }
 //컬러체인지
