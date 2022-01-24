@@ -47,6 +47,29 @@ function handleMouseMove(event) {
     ctx.stroke();
   }
 }
+
+function onTouchStart(event) {
+  const x = event.offsetX;
+  const y = event.offsetY;
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  painting = true;
+}
+
+function onTouchMove(event) {
+  const x = event.offsetX;
+  const y = event.offsetY;
+  if (painting) {
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  }
+}
+function onTouchEnd() {
+  if (painting) {
+    onTouchMove();
+    painting = false;
+  }
+}
 //컬러체인지
 function handleClickColor(event) {
   const color = event.target.style.backgroundColor;
@@ -104,9 +127,9 @@ if (canvas) {
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
-  canvas.addEventListener("touchstart", startPainting);
-  canvas.addEventListener("touchmove", handleMouseMove);
-  canvas.addEventListener("touchend", stopPainting);
+  canvas.addEventListener("touchstart", onTouchStart);
+  canvas.addEventListener("touchmove", onTouchMove);
+  canvas.addEventListener("touchend", onTouchEnd);
   canvas.addEventListener("touchleave", stopPainting);
   canvas.addEventListener("contextmenu", handleCM);
 }
